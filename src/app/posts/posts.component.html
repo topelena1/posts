@@ -1,0 +1,31 @@
+
+
+<mat-card class="search-bar">
+  <div class="container">
+  <mat-card-header>Search posts</mat-card-header>
+  <mat-form-field class="term">
+      <input matInput 
+      required 
+      color="primary"
+      [(ngModel)] = "queryString" 
+      placeholder="type post to find..."/>
+  </mat-form-field>
+  </div>
+</mat-card>
+
+<mat-nav-list> 
+  <mat-card *ngFor="let post of posts | FilterPipe: queryString">
+   
+     <a matCard routerLink="/detail/{{post.id}}">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ post.texttitle | uppercase }}  </mat-card-title>         
+        </mat-card-header>      
+       <mat-card-subtitle>{{ post.text }}</mat-card-subtitle>
+       <mat-card-content>TAG: {{ post.tags}}</mat-card-content>
+       </mat-card>     
+     </a>      
+   </mat-card>
+ </mat-nav-list> 
+
+
